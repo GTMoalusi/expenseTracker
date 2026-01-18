@@ -18,19 +18,19 @@ public class Expense {
     }
 
     // Getters
-    public int getid(){
+    public int getId() {
         return id;
     }
-    public String getdescription(){
+    public String getDescription() {
         return description;
     }
-    public double getamount(){
+    public double getAmount() {
         return amount;
     }
-    public String getcategory(){
+    public String getCategory() {
         return category;
     }
-    public LocalDate getdate(){
+    public LocalDate getDate() {
         return date;
     }
 
