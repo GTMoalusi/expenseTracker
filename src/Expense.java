@@ -37,11 +37,11 @@ public class Expense {
     @Override
     public String toString(){
         return "Expense{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", amount=" + amount +
-                ", category='" + category + '\'' +
-                ", date=" + date +
+                "id= " + id +
+                ", description= '" + description + '\'' +
+                ", amount= R" + amount +
+                ", category= '" + category + '\'' +
+                ", date= " + date +
                 '}';
     }
 }
