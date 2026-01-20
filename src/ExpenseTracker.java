@@ -1,6 +1,9 @@
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ExpenseTracker {
 
@@ -47,6 +50,16 @@ public class ExpenseTracker {
             }
         }
         return filteredExpenses;
+    }
+
+    public Map<YearMonth, Double> getMonthlySummary(){
+        Map<YearMonth, Double> summary = new HashMap<>();
+
+        for(Expense expense : expenses){
+            YearMonth month = YearMonth.from(expense.getDate());
+            summary.put(month, summary.getOrDefault(month, 0.0) + expense.getAmount());
+        }
+        return summary;
     }
 }
 
