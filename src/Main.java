@@ -1,4 +1,6 @@
+import java.time.YearMonth;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +18,8 @@ public class Main {
             System.out.println("2. View All Expenses");
             System.out.println("3. View Total Expenses");
             System.out.println("4. View Total Expenses by Category");
-            System.out.println("5. Exit");
+            System.out.println("5. View Monthly Summary");
+            System.out.println("6. Exit");
 
             System.out.print("Choose an option: ");
 
@@ -44,7 +47,12 @@ public class Main {
                 case 4:
                     handleFilterByCategory(scanner, tracker);
                     break;
+
                 case 5:
+                    handleMonthlySummary(tracker);
+                    break;
+
+                case 6:
                     running = false;
                     System.out.println("Goodbye!");
                     break;
@@ -107,6 +115,19 @@ public class Main {
 
         for (Expense expense : filtered) {
             System.out.println(expense);
+        }
+    }
+
+    private static void handleMonthlySummary(ExpenseTracker tracker) {
+        Map<YearMonth, Double> monthlySummary = tracker.getMonthlySummary();
+
+        if (monthlySummary.isEmpty()) {
+            System.out.println("No expenses recorded.");
+            return;
+        }
+
+        for (Map.Entry<YearMonth, Double> entry : monthlySummary.entrySet()) {
+            System.out.println(entry.getKey() + ": R" + entry.getValue());
         }
     }
 }
