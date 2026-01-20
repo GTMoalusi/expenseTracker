@@ -37,5 +37,16 @@ public class ExpenseTracker {
 
         return total;
     }
+
+    public List<Expense> getExpensesByCategory(String category){
+        List<Expense> filteredExpenses = new ArrayList<>();
+
+        for(Expense expense : expenses){
+            if(expense.getCategory().equalsIgnoreCase(category)){
+                filteredExpenses.add(expense);
+            }
+        }
+        return filteredExpenses;
+    }
 }
 
