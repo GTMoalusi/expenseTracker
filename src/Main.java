@@ -81,8 +81,13 @@ public class Main {
         System.out.print("Enter category: ");
         String category = scanner.nextLine();
 
-        Expense expense = tracker.addExpense(description, amount, category);
-        System.out.println("Expense added: " + expense);
+        try {
+            Expense expense = tracker.addExpense(description, amount, category);
+            System.out.println("Expense added: " + expense);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
     }
 
     private static void handleViewExpenses(ExpenseTracker tracker) {
