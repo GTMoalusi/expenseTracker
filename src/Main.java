@@ -15,7 +15,8 @@ public class Main {
             System.out.println("1. Add Expense");
             System.out.println("2. View All Expenses");
             System.out.println("3. View Total Expenses");
-            System.out.println("4. Exit");
+            System.out.println("4. View Total Expenses by Category");
+            System.out.println("5. Exit");
 
             System.out.print("Choose an option: ");
 
@@ -41,6 +42,9 @@ public class Main {
                     break;
 
                 case 4:
+                    handleFilterByCategory(scanner, tracker);
+                    break;
+                case 5:
                     running = false;
                     System.out.println("Goodbye!");
                     break;
@@ -49,7 +53,6 @@ public class Main {
                     System.out.println("Invalid option. Try again.");
             }
         }
-
         scanner.close();
     }
 
@@ -90,5 +93,20 @@ public class Main {
     private static void handleViewTotal(ExpenseTracker tracker) {
         double total = tracker.getTotalExpenses();
         System.out.println("Total expenses: R" + total);
+    }
+
+    private static void handleFilterByCategory(Scanner scanner, ExpenseTracker tracker) {
+        System.out.print("Enter category to filter by: ");
+        String category = scanner.nextLine();
+
+        List<Expense> filtered = tracker.getExpensesByCategory(category);
+        if (filtered.isEmpty()) {
+            System.out.println("No expense found for category: " + category);
+            return;
+        }
+
+        for (Expense expense : filtered) {
+            System.out.println(expense);
+        }
     }
 }
