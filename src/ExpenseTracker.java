@@ -19,6 +19,19 @@ public class ExpenseTracker {
 
     //Unique Methods
     public Expense addExpense(String description, double amount, String category){
+
+        if(description == null || description.trim().isEmpty()){
+            throw new IllegalArgumentException("Description cannot be empty");
+        }
+
+        if(amount <= 0){
+            throw new IllegalArgumentException("Amount must be greater than zero");
+        }
+
+        if(category == null || category.trim().isEmpty()){
+            throw new IllegalArgumentException("Category cannot be empty");
+        }
+
         Expense expense = new Expense(nextId, description, amount, category, LocalDate.now());
 
         expenses.add(expense);
